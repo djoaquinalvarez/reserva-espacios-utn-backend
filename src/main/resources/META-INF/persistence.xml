@@ -1,6 +1,7 @@
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
     <persistence-unit name="JPA_PU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.joaquinalvarez.reservaespaciosutn.model.entity.Role</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/reserva-espacios-utn"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
@@ -8,6 +9,8 @@
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
             <property name="hibernate.show_sql" value="true"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
+
         </properties>
     </persistence-unit>
 </persistence>

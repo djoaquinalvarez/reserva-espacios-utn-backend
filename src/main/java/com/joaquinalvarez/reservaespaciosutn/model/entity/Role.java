@@ -3,7 +3,7 @@ package com.joaquinalvarez.reservaespaciosutn.model.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "role")
 public class Role {
 
     @Id
