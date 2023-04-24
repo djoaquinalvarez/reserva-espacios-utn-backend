@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository repositoryUser; //no me salio usar el autowired
 
+
     public List<User> getUsers(){
         return repositoryUser.findAll();
     }
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User createUser) {
-        return null;
+        return repositoryUser.save(createUser);
     }
 
     @Override
