@@ -1,9 +1,17 @@
 package com.joaquinalvarez.reservaespaciosutn.model.entity;
 
+
 import jakarta.persistence.*;
+import lombok.*;
+
 
 @Entity
-@Table(name = "user")
+@Setter
+@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,43 +22,4 @@ public class User {
     @ManyToOne
     private Role role;
 
-    public User() {
-    }
-
-    public User(Long id, String name, Role role) {
-        this.id = id;
-        this.name = name;
-        this.role = role;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    @Override
-    public String toString() {
-        return "id=" + id +
-                ", name='" + name + '\'' +
-                ", role=" + role;
-    }
 }
