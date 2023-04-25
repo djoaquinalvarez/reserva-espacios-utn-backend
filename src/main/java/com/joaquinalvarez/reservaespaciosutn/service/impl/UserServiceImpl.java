@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(Long userId, User user) {
-
+    public User update(Long userId, User user) {
+        return repositoryUser.save(user);
     }
 
     @Override
