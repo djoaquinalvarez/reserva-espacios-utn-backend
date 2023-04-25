@@ -1,0 +1,16 @@
+## Base de Datos
+#datasource:
+#  url: jdbc:mysql://localhost:3306/reserva-espacios-utn
+#  username: root
+#  password: tauro14298
+#
+#  # JPA
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#
+#    # Configuración para mostrar el SQL que se está ejecutando
+#    properties:
+#      hibernate:
+#      dialect: org.hibernate.dialect.MySQL5Dialect
+#      format_sql: true
