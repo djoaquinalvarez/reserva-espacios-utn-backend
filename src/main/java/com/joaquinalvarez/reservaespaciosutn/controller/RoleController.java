@@ -25,7 +25,7 @@ public class RoleController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Role> updateRole(@RequestBody Role role, @PathVariable Long id){
+    public ResponseEntity<Role> updateRole(@RequestBody Role role, @PathVariable Long id) throws Exception {
         return new ResponseEntity<>(roleService.update(id, role), HttpStatus.OK);
     }
 }

@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
                 .filter(u -> u.getId().equals(userId))
                 .findFirst();
 
-        User usuarioActualizado = usuarioEncontrado.orElseThrow(() -> new Exception("El usuario no ha sido encontrado en la base de datos"));
+        User usuarioActualizado = usuarioEncontrado.orElseThrow(() -> new Exception("El usuario que se quiere modificar no ha sido encontrado en la base de datos"));
         usuarioActualizado.setName(user.getName());
         usuarioActualizado.setRole(user.getRole());
         return repositoryUser.save(usuarioActualizado);
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
                 .filter(u -> u.getId().equals(userId))
                 .findFirst();
 
-        User usuarioEliminado = usuarioEncontrado.orElseThrow(() -> new Exception("El usuario no ha sido encontrado en la base de datos"));
+        User usuarioEliminado = usuarioEncontrado.orElseThrow(() -> new Exception("El usuario se quiere eliminar no ha sido encontrado en la base de datos"));
         repositoryUser.delete(usuarioEliminado);
     }
 }

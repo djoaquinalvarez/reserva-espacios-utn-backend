@@ -29,8 +29,14 @@ public class RoleServiceImpl implements RoleService {
         return roleRepository.save(createRole);
     }
     @Override
-    public Role update(Long roleId, Role updateRoleDto) {
-        Optional<Role> rolEncontrado =
+    public Role update(Long roleId, Role updateRole) throws Exception {
+        Optional<Role> rolEncontrado = getRoles().stream()
+                .filter(r -> r.getId().equals(roleId))
+                .findFirst();
+
+        Role rolActualizado = rolEncontrado.orElseThrow(() -> new Exception("El rol que se quiere modificar no se encuentra en la base de datos"));
+        rolActualizado.setName(updateRole.getName());
+        return roleRepository.save(rolActualizado);
     }
     @Override
     public void delete(Long roleId) {
