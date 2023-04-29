@@ -10,10 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 
@@ -23,8 +20,12 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping("/add")
-
-    public ResponseEntity<Role> create(@RequestBody Role role){
+    public ResponseEntity<Role> createRole(@RequestBody Role role){
         return new ResponseEntity<>(roleService.save(role), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Role> updateRole(@RequestBody Role role, @PathVariable Long id){
+        return new ResponseEntity<>(roleService.update(id, role), HttpStatus.OK);
     }
 }
