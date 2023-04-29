@@ -29,8 +29,8 @@ public class UserController {
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("id") Long id){
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("id") Long id) throws Exception {
         return new ResponseEntity<>(userService.update(id,user), HttpStatus.OK);
     }
 
