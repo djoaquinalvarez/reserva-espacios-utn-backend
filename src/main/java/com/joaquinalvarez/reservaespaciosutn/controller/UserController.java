@@ -2,6 +2,7 @@ package com.joaquinalvarez.reservaespaciosutn.controller;
 
 import com.joaquinalvarez.reservaespaciosutn.model.entity.User;
 import com.joaquinalvarez.reservaespaciosutn.service.impl.UserServiceImpl;
+import jakarta.ws.rs.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,11 @@ public class UserController {
     @PostMapping("/add")
     public ResponseEntity<User> addUser(@RequestBody User user){
         return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable("id") Long id) throws Exception {
+        return new ResponseEntity<>(userService.update(id,user), HttpStatus.OK);
     }
 
 }

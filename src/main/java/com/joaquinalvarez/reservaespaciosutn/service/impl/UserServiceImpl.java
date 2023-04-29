@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -31,8 +32,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(Long userId, User user) {
-        return repositoryUser.save(user);
+    public User update(Long userId, User user) throws Exception {
+        Optional<User> usuarioEncontrado = getUsers().stream()
+                .filter(u -> u.getId().equals(userId))
+                .findFirst();
+
+        User usuarioActualizado = usuarioEncontrado.orElseThrow(() -> new Exception("El usuario no ha sido encontrado en la base de datos"));
+        usuarioActualizado.setName(user.getName());
+        usuarioActualizado.setRole(user.getRole());
+        return repositoryUser.save(usuarioActualizado);
     }
 
     @Override
