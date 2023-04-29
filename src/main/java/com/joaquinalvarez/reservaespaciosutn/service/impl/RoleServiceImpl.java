@@ -6,11 +6,19 @@ import com.joaquinalvarez.reservaespaciosutn.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 
     @Autowired
     RoleRepository roleRepository;
+
+    public List<Role> getRoles(){
+        return roleRepository.findAll();
+    }
+
     @Override
     public Role getById(Long id) {
         return null;
@@ -21,7 +29,14 @@ public class RoleServiceImpl implements RoleService {
         return roleRepository.save(createRole);
     }
     @Override
-    public void update(Long roleId, Role updateRoleDto) {
+    public Role update(Long roleId, Role updateRole) throws Exception {
+        Optional<Role> rolEncontrado = getRoles().stream()
+                .filter(r -> r.getId().equals(roleId))
+                .findFirst();
+
+        Role rolActualizado = rolEncontrado.orElseThrow(() -> new Exception("El rol que se quiere modificar no se encuentra en la base de datos"));
+        rolActualizado.setName(updateRole.getName());
+        return roleRepository.save(rolActualizado);
     }
     @Override
     public void delete(Long roleId) {

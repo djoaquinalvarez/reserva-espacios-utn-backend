@@ -8,7 +8,7 @@ public interface RoleService {
 
     Role getById(Long id);
     Role save(Role createRole);
-    void update(Long roleId, Role updateRoleDto);
+    Role update(Long roleId, Role updateRoleDto) throws Exception;
     void delete(Long roleId);
 
 }
