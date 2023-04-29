@@ -34,4 +34,9 @@ public class UserController {
         return new ResponseEntity<>(userService.update(id,user), HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable Long id) throws Exception {
+        userService.delete(id);
+    }
+
 }

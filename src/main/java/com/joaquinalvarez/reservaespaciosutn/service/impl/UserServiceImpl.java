@@ -44,7 +44,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(Long userId) {
+    public void delete(Long userId) throws Exception {
+        Optional<User> usuarioEncontrado = getUsers().stream()
+                .filter(u -> u.getId().equals(userId))
+                .findFirst();
 
+        User usuarioEliminado = usuarioEncontrado.orElseThrow(() -> new Exception("El usuario no ha sido encontrado en la base de datos"));
+        repositoryUser.delete(usuarioEliminado);
     }
 }
