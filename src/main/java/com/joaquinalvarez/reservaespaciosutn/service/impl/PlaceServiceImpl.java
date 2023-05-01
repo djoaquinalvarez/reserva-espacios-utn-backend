@@ -43,7 +43,13 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long id) throws Exception {
+        Optional<Place> placeFound = getAll().stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst();
+
+        Place deletedPlace = placeFound.orElseThrow(() -> new Exception("El lugar que se quiere eliminar no se encuentra en la base de datos."));
+        placeRepository.delete(deletedPlace);
 
     }
 }

@@ -30,4 +30,9 @@ public class PlaceController {
     public ResponseEntity<Place> updatePlace(@RequestBody Place place, @PathVariable Long id) throws Exception {
         return new ResponseEntity<>(placeService.update(id, place), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deletePlace(@PathVariable Long id) throws Exception {
+        placeService.delete(id);
+    }
 }
