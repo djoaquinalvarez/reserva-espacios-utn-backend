@@ -28,8 +28,13 @@ public class ReservationController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Reservation> update(@RequestBody Reservation reservation, @PathVariable Long id){
+    public ResponseEntity<Reservation> updateReservation(@RequestBody Reservation reservation, @PathVariable Long id) throws Exception {
         return new ResponseEntity<>(reservationService.update(id, reservation), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteReservation(@PathVariable Long id) throws Exception {
+        reservationService.delete(id);
     }
 
     

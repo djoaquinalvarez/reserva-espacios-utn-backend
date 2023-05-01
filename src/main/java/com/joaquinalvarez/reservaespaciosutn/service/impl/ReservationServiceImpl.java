@@ -45,7 +45,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public void delete(Long id) {
-
+    public void delete(Long id) throws Exception {
+        Reservation reservationToDelete = getById(id);
+        reservationRepository.delete(reservationToDelete);
     }
 }
