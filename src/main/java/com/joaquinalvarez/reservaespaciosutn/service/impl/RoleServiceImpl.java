@@ -20,8 +20,11 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role getById(Long id) {
-        return null;
+    public Role getById(Long id) throws Exception {
+        Optional<Role> roleFound = getRoles().stream().
+                filter(r -> r.getId().equals(id))
+                .findFirst();
+        return roleFound.orElseThrow(() -> new Exception("El rol no ha sido encontrado en la base de datos"));
     }
 
     @Override
@@ -39,7 +42,7 @@ public class RoleServiceImpl implements RoleService {
         return roleRepository.save(rolActualizado);
     }
     @Override
-    public void delete(Long roleId) {
-
+    public void delete(Long roleId) throws Exception {
+        roleRepository.delete(getById(roleId));
     }
 }

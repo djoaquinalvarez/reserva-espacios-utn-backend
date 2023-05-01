@@ -35,4 +35,9 @@ public class RoleController {
     public ResponseEntity<Role> updateRole(@RequestBody Role role, @PathVariable Long id) throws Exception {
         return new ResponseEntity<>(roleService.update(id, role), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteRole(@PathVariable Long id){
+        roleService.delete(id);
+    }
 }
