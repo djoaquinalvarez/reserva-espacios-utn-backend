@@ -9,7 +9,8 @@ public interface PlaceService {
     Place getById(Long id);
     List<Place> getAll();
     Place save(Place place);
-    Place update(Place place);
+    Place update(Long id, Place place) throws Exception;
+
     void delete(Long id);
 
 }

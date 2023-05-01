@@ -25,4 +25,9 @@ public class PlaceController {
     public ResponseEntity<Place> createPlace(@RequestBody Place place){
         return new ResponseEntity<>(placeService.save(place),HttpStatus.CREATED);
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Place> updatePlace(@RequestBody Place place, @PathVariable Long id) throws Exception {
+        return new ResponseEntity<>(placeService.update(id, place), HttpStatus.OK);
+    }
 }

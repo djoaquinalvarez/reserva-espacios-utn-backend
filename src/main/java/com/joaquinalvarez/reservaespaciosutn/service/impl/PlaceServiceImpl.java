@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlaceServiceImpl implements PlaceService {
@@ -30,8 +31,15 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public Place update(Place place) {
-        return null;
+    public Place update(Long id, Place place) throws Exception {
+        Optional<Place> placeFound = getAll().stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst();
+
+        Place placeUpdated = placeFound.orElseThrow(() -> new Exception("El lugar que se quiere modificar no se encuentra en la base de datos."));
+        placeUpdated.setName(place.getName());
+
+        return placeRepository.save(placeUpdated);
     }
 
     @Override
