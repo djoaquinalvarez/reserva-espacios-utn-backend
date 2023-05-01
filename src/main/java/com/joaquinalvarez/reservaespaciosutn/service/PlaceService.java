@@ -11,6 +11,6 @@ public interface PlaceService {
     Place save(Place place);
     Place update(Long id, Place place) throws Exception;
 
-    void delete(Long id);
+    void delete(Long id) throws Exception;
 
 }
