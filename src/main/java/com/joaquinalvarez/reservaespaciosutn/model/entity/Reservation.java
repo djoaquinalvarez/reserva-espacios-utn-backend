@@ -1,10 +1,12 @@
 package com.joaquinalvarez.reservaespaciosutn.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 @Entity
 @Setter
@@ -19,8 +21,10 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate reservationDate;
-    private LocalTime reservationTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd", locale = "es-Arg", timezone = "America/Buenos Aires")
+    private Date reservationDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", locale = "es-Arg", timezone = "America/Buenos Aires")
+    private Date reservationTime;
 
     @ManyToOne
     @JoinColumn(name="user_id", referencedColumnName = "id")

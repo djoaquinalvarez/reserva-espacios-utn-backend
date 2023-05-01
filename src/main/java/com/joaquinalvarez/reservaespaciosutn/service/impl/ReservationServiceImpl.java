@@ -26,7 +26,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Reservation save(Reservation reservation) {
-        return null;
+        return reservationRepository.save(reservation);
     }
 
     @Override
