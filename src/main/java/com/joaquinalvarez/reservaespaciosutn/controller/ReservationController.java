@@ -23,4 +23,6 @@ public class ReservationController {
     public ResponseEntity<List<Reservation>> getReservations(){
         return new ResponseEntity<>(reservationService.getAll(), HttpStatus.OK);
     }
+
+    
 }
