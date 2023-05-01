@@ -50,6 +50,5 @@ public class PlaceServiceImpl implements PlaceService {
 
         Place deletedPlace = placeFound.orElseThrow(() -> new Exception("El lugar que se quiere eliminar no se encuentra en la base de datos."));
         placeRepository.delete(deletedPlace);
-
     }
 }
