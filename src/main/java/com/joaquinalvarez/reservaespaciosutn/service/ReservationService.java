@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ReservationService {
 
-    Reservation getById(Long id);
+    Reservation getById(Long id) throws Exception;
     List<Reservation> getAll();
     Reservation save(Reservation reservation);
-    Reservation update(Long id, Reservation reservation);
+    Reservation update(Long id, Reservation reservation) throws Exception;
     void delete(Long id);
 }

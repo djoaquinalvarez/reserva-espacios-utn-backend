@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -15,8 +16,12 @@ public class ReservationServiceImpl implements ReservationService {
     private ReservationRepository reservationRepository;
 
     @Override
-    public Reservation getById(Long id) {
-        return null;
+    public Reservation getById(Long id) throws Exception {
+        Optional<Reservation> reservationFound = getAll().stream()
+                .filter(r -> r.getId().equals(id))
+                .findFirst();
+
+        return reservationFound.orElseThrow(() -> new Exception("La reserva no ha sido encontrada en la base de datos."));
     }
 
     @Override
@@ -30,8 +35,13 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Reservation update(Long id, Reservation reservation) {
-        return null;
+    public Reservation update(Long id, Reservation reservation) throws Exception {
+        Reservation reservationToUpdate = getById(id);
+        reservationToUpdate.setReservationDate(reservation.getReservationDate());
+        reservationToUpdate.setReservationTime(reservation.getReservationTime());
+        reservationToUpdate.setRequestedPlace(reservation.getRequestedPlace());
+        reservationToUpdate.setRequestingUser(reservation.getRequestingUser());
+        return reservationRepository.save(reservationToUpdate);
     }
 
     @Override
