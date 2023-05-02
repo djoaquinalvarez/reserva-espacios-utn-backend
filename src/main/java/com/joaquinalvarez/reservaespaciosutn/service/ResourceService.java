@@ -12,6 +12,6 @@ public interface ResourceService {
     List<Resource> getResources();
     Resource create(Resource resource);
     Resource update(Long id, Resource resource) throws Exception;
-    void delete(Long id);
+    void delete(Long id) throws Exception;
 
 }

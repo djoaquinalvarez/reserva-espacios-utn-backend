@@ -35,4 +35,9 @@ public class ResourceController {
     public ResponseEntity<Resource> updateResource(@PathVariable Long id, @RequestBody Resource resource) throws Exception {
         return new ResponseEntity<>(resourceService.update(id, resource), HttpStatus.OK);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteResource(@PathVariable Long id) throws Exception {
+        resourceService.delete(id);
+    }
 }
