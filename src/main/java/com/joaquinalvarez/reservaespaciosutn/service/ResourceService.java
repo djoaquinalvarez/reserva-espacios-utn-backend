@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ResourceService {
 
-    Resource getById(Long id);
+    Resource getById(Long id) throws Exception;
     List<Resource> getResources();
     Resource create(Resource resource);
     Resource update(Long id, Resource resource);

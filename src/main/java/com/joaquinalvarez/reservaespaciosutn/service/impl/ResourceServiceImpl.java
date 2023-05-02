@@ -15,8 +15,10 @@ public class ResourceServiceImpl implements ResourceService {
     private ResourceRepository resourceRepository;
 
     @Override
-    public Resource getById(Long id) {
-        return null;
+    public Resource getById(Long id) throws Exception {
+        return resourceRepository.findById(id).orElseThrow(() -> new Exception(
+                String.format("El recurso con el id #%s no ha sido encontrado en la base de datos", id)
+        ));
     }
 
     @Override
