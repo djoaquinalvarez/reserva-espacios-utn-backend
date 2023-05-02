@@ -5,10 +5,7 @@ import com.joaquinalvarez.reservaespaciosutn.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +24,10 @@ public class ResourceController {
     @GetMapping("/get/{id}")
     public ResponseEntity<Resource> getResourceById(@PathVariable Long id) throws Exception {
         return new ResponseEntity<>(resourceService.getById(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Resource> createResource(@RequestBody Resource resource){
+        return new ResponseEntity<>(resourceService.create(resource), HttpStatus.CREATED);
     }
 }

@@ -28,7 +28,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public Resource create(Resource resource) {
-        return null;
+        return resourceRepository.save(resource);
     }
 
     @Override
