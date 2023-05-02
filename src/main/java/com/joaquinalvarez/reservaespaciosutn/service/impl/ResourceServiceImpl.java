@@ -32,8 +32,12 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public Resource update(Long id, Resource resource) {
-        return null;
+    public Resource update(Long id, Resource resource) throws Exception {
+        Resource resourceToUpdate = getById(id);
+        resourceToUpdate.setName(resource.getName());
+        resourceToUpdate.setDescription(resource.getDescription());
+
+        return resourceRepository.save(resourceToUpdate);
     }
 
     @Override

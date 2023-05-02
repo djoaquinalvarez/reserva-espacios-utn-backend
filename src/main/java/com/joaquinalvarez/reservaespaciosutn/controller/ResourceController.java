@@ -30,4 +30,9 @@ public class ResourceController {
     public ResponseEntity<Resource> createResource(@RequestBody Resource resource){
         return new ResponseEntity<>(resourceService.create(resource), HttpStatus.CREATED);
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Resource> updateResource(@PathVariable Long id, @RequestBody Resource resource) throws Exception {
+        return new ResponseEntity<>(resourceService.update(id, resource), HttpStatus.OK);
+    }
 }
