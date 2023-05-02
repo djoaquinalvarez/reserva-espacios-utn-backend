@@ -7,7 +7,7 @@ import lombok.*;
 @Entity
 @AllArgsConstructor
 @RequiredArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 @Data
 @Table(name = "resource")
 public class Resource {
@@ -16,7 +16,7 @@ public class Resource {
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @NotNull
     private String name;
     private String description;
