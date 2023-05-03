@@ -18,7 +18,9 @@ public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String name;
+
     @OneToMany
     @JoinColumn(name = "resource_id", referencedColumnName = "id")
     private List<Resource> resources;
