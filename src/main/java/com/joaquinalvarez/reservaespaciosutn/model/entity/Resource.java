@@ -18,6 +18,10 @@ public class Resource {
 
     @NotNull
     private String name;
+
+    @NotNull
+    private boolean isAvailable;
+
     private String description;
 
 

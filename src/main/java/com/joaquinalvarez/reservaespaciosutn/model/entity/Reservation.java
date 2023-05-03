@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Setter
@@ -23,6 +22,7 @@ public class Reservation {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd", locale = "es-Arg", timezone = "America/Buenos Aires")
     private Date reservationDate;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss", locale = "es-Arg", timezone = "America/Buenos Aires")
     private Date reservationTime;
 
