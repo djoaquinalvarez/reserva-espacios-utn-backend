@@ -13,7 +13,6 @@ import lombok.*;
 public class Resource {
 
     @Id
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
