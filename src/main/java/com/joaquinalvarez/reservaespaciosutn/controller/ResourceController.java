@@ -26,7 +26,7 @@ public class ResourceController {
         return new ResponseEntity<>(resourceService.getById(id), HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/add")
     public ResponseEntity<Resource> createResource(@RequestBody Resource resource){
         return new ResponseEntity<>(resourceService.create(resource), HttpStatus.CREATED);
     }
