@@ -1,11 +1,8 @@
 package com.joaquinalvarez.reservaespaciosutn.model.entity;
 
-
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import java.util.List;
-
 
 @Entity
 @Getter
@@ -13,16 +10,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name="place")
-public class Place {
+@Table(name="state")
+public class State {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
     private String name;
-
-    @ManyToMany
-    private List<Resource> resources;
-
-    @ManyToOne
-    private State state;
 }
