@@ -42,7 +42,8 @@ public class StateServiceImpl implements StateService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long id) throws Exception {
+        stateRepository.delete(getById(id));
 
     }
 }

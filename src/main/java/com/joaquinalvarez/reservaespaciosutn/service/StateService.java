@@ -11,7 +11,7 @@ public interface StateService {
     List<State> findAll();
     State save(State state);
     State update(Long id, State state) throws Exception;
-    void delete(Long id);
+    void delete(Long id) throws Exception;
 
 
 }

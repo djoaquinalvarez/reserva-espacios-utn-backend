@@ -29,7 +29,7 @@ public class StateController {
         return new ResponseEntity<>(stateService.update(id, state), HttpStatus.OK);
     }
     @DeleteMapping("/delete/{id}")
-    public void deleteState(@PathVariable Long id) {
+    public void deleteState(@PathVariable Long id) throws Exception {
         stateService.delete(id);
     }
 
