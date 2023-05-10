@@ -25,7 +25,7 @@ public class StateController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<State> updateState(@RequestBody State state,@PathVariable Long id){
+    public ResponseEntity<State> updateState(@RequestBody State state,@PathVariable Long id) throws Exception {
         return new ResponseEntity<>(stateService.update(id, state), HttpStatus.OK);
     }
 
