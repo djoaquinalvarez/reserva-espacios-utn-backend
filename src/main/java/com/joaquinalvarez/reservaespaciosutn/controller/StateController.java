@@ -24,5 +24,10 @@ public class StateController {
 
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<State> updateState(@RequestBody State state,@PathVariable Long id){
+        return new ResponseEntity<>(stateService.update(id, state), HttpStatus.OK);
+    }
+
 
 }
