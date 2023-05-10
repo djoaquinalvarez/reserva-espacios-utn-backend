@@ -4,9 +4,11 @@ import com.joaquinalvarez.reservaespaciosutn.model.entity.State;
 import com.joaquinalvarez.reservaespaciosutn.repository.StateRepository;
 import com.joaquinalvarez.reservaespaciosutn.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class StateServiceImpl implements StateService {
 
     @Autowired
