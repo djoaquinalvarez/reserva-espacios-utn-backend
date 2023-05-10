@@ -28,6 +28,10 @@ public class StateController {
     public ResponseEntity<State> updateState(@RequestBody State state,@PathVariable Long id) throws Exception {
         return new ResponseEntity<>(stateService.update(id, state), HttpStatus.OK);
     }
+    @DeleteMapping("/delete/{id}")
+    public void deleteState(@PathVariable Long id) {
+        stateService.delete(id);
+    }
 
 
 }
