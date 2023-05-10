@@ -26,7 +26,7 @@ public class StateServiceImpl implements StateService {
 
     @Override
     public State save(State state) {
-        return null;
+        return stateRepository.save(state);
     }
 
     @Override
